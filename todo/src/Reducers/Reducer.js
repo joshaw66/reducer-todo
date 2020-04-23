@@ -25,7 +25,7 @@ export const reducerList = [
 
 export const reducer = (state, action) => {
     switch (action.type) {
-      case 'EditReducer':
+      case 'ReducerEditor':
         return {}
       default:
         return state;

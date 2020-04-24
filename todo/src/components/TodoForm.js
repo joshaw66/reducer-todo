@@ -1,39 +1,31 @@
-import React, { useReducer, useState } from 'react';
-import { reducerList, reducer } from '../Reducers/Reducer';
+import React from 'react';
+import styled from 'styled-components';
 
-class TodoForm extends React.Component{
-    constructor(props){
-        super(props);
-        this.state ={
-            item: ''
-        };
-    }
+const AddButton = styled.button`
+margin: 2%;
+`
 
-    handleChanges = e => {
-        this.setState({ [e.target.name]: e.target.value });
-      };
+const Container = styled.div`
+background-color: lightblue;
+height: 50%;
+`
 
-    submitItem = e => {
-        e.preventDefault();
-        this.setState({item: ''});
-        this.props.addItem(e, this.state.item);
-    };
-    render(){
-        return(
-            <div>
-                <form onSubmit={this.submitItem}>
-                    <input
-                    type="text"
-                    value={this.props.taskInput}
-                    placeholder="The task at hand is.."
-                    name="taskInput"
-                    onChange={this.props.inputChange}/>
-                    <button onClick={event => {this.props.taskSubmit(event)}}>Add new Todo</button>
-                    <button onClick={event => {this.props.clearCompleted(event)}}>Clear Completed Tasks</button>
-                </form>
-            </div>
-        )
-    }
+const TodoForm = props => {
+    
+    return(
+        <Container>
+            <form>
+            <input type="text"
+            value={props.taskInput}
+            name="taskInput"
+            onChange={props.inputChange}
+            />
+            <AddButton onClick={event=> {props.taskSubmit(event)}}>Add Todo Task</AddButton>
+            <button onClick={event=> {props.clearCompleted(event)}}>Clear Completed Tasks</button>
+            </form>
+        </Container>
+
+    )
 }
 
-export default TodoForm 
+export default TodoForm

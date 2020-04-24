@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useReducer, useState } from 'react';
+import { reducerList, reducer } from '../Reducers/Reducer';
 
 class TodoForm extends React.Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state ={
             item: ''
         };
@@ -19,15 +20,18 @@ class TodoForm extends React.Component{
     };
     render(){
         return(
-            <form onSubmit={this.submitItem}>
-                <input
-                type="text"
-                value={this.state.item}
-                placeholder="The task at hand is.."
-                name="item"
-                onChange={this.handleChanges}
-                />
-            </form>
+            <div>
+                <form onSubmit={this.submitItem}>
+                    <input
+                    type="text"
+                    value={this.props.taskInput}
+                    placeholder="The task at hand is.."
+                    name="taskInput"
+                    onChange={this.props.inputChange}/>
+                    <button onClick={event => {this.props.taskSubmit(event)}}>Add new Todo</button>
+                    <button onClick={event => {this.props.clearCompleted(event)}}>Clear Completed Tasks</button>
+                </form>
+            </div>
         )
     }
 }

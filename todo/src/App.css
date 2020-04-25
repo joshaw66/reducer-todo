@@ -1,5 +1,12 @@
+body {
+  background-color: black;
+  margin: 2%;
+  border-radius: 10px;
+}
+
 .App {
   text-align: center;
+  margin: 2;
 }
 
 .App-logo {
@@ -37,6 +44,11 @@
   }
 }
 
-.todocomplete{
-  background-color: yellow;
+.todofinished{
+  color: green;
+  background-color: lightgrey;
+  font-style: italic;
+  outline-style: double;
+  width: 20%;
+  padding-left: 40%;
 } 
